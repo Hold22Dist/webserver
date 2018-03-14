@@ -24,8 +24,14 @@ public class HighscoreManager {
 
     public static HashMap<String, Integer> getAllScore(){
         HashMap<String, Integer> points = new HashMap<>();
+        int amount;
         for (Map.Entry<String, HashSet<String>> entry : guessedWords.entrySet()) {
-            points.put(entry.getKey(), entry.getValue().size());
+            amount = 0;
+            for (String s : entry.getValue()) {
+                amount += s.length();
+            }
+
+            points.put(entry.getKey(), amount);
         }
         MapUtil.sortByValue(points);
         return points;

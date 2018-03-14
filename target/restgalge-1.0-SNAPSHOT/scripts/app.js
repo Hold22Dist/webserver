@@ -106,6 +106,8 @@ function restartGame(){
         success: function(data){
             updateGame(data)
             $('#lostgame').foundation('close');
+            $('#wongame').foundation('close');
+
             lostloading.hide();
             wonloading.hide();
         },
