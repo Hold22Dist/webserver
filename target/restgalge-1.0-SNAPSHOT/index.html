@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Galgeleg</title>
+    <link rel="stylesheet" href="css/foundation.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+<body>
+    <div class="grid-container">
+        <div class="grid-x">
+            <div class="small-8 large-4 cell">
+                <form class="callout" id="log-in-form">
+                    <h4 class="text-center">Log ind med javabog.dk bruger</h4>
+                    <label>Brugernavn
+                        <input value="s154674" type="text" placeholder="s123456" name="brugernavn">
+                    </label>
+                    <label>Password
+                        <input value="12341234" type="password" placeholder="********" name="password">
+                    </label>
+                    <img id="loading-gif" src="loading.gif" width="30px" style="display: none">
+                    <p id="wrong-text" style="line-height:30px; color:red; display: none;">Desværre, prøv igen</p>
+                    <p id="no-text" style="line-height:30px;"></p>
+                    <p><input type="submit" class="button expanded" value="Log ind"></input></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid-container">
+        <div class="grid-x">
+            <div class="small-12 large-12 cell">
+                <div class="callout" id="game" style="display: none;">
+                    <div class="small button-group">
+                        <a id="game-button" class="button">Spil</a>
+                        <a id="highscore-button" class="secondary button">Highscores</a>
+                        <a id="myscore-button" class="secondary button">Mine ord</a>
+                        <a id="logout-button" class="alert button">Log ud</a>
+                    </div>
+                    <div id="game-place">
+                        <div class="grid-x">
+                            <div class="cell small-12 medium-8 large-6">
+                                <h4 id="word">FEJL</h4>
+                                <p>Forkerte gæt: <span id="wrongs">x</span>/8</p>
+                                <div id="keyboard">
+                                    <div class="align-center medium success button-group">
+                                        <a class="button">q</a>
+                                        <a class="button">w</a>
+                                        <a class="button">e</a>
+                                        <a class="button">r</a>
+                                        <a class="button">t</a>
+                                        <a class="button">y</a>
+                                        <a class="button">u</a>
+                                        <a class="button">i</a>
+                                        <a class="button">o</a>
+                                        <a class="button">p</a>
+                                        <a class="button">å</a>
+                                    </div>
+                                    <div class="align-center medium success button-group">
+                                        <a class="button">a</a>
+                                        <a class="button">s</a>
+                                        <a class="button">d</a>
+                                        <a class="button">f</a>
+                                        <a class="button">g</a>
+                                        <a class="button">h</a>
+                                        <a class="button">j</a>
+                                        <a class="button">k</a>
+                                        <a class="button">l</a>
+                                        <a class="button">æ</a>
+                                        <a class="button">ø</a>
+                                    </div>
+                                    <div class="align-center medium success button-group">
+                                        <a class="button">z</a>
+                                        <a class="button">x</a>
+                                        <a class="button">c</a>
+                                        <a class="button">v</a>
+                                        <a class="button">b</a>
+                                        <a class="button">n</a>
+                                        <a class="button">m</a>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div id="used-keyboard">
+                                    <div class="align-center medium secondary button-group">
+                                        <a class="button">q</a>
+                                        <a class="button">w</a>
+                                        <a class="button">e</a>
+                                        <a class="button">r</a>
+                                        <a class="button">t</a>
+                                        <a class="button">y</a>
+                                        <a class="button">u</a>
+                                        <a class="button">i</a>
+                                        <a class="button">o</a>
+                                        <a class="button">p</a>
+                                        <a class="button">å</a>
+                                    </div>
+                                    <div class="align-center medium secondary button-group">
+                                        <a class="button">a</a>
+                                        <a class="button">s</a>
+                                        <a class="button">d</a>
+                                        <a class="button">f</a>
+                                        <a class="button">g</a>
+                                        <a class="button">h</a>
+                                        <a class="button">j</a>
+                                        <a class="button">k</a>
+                                        <a class="button">l</a>
+                                        <a class="button">æ</a>
+                                        <a class="button">ø</a>
+                                    </div>
+                                    <div class="align-center medium secondary button-group">
+                                        <a class="button">z</a>
+                                        <a class="button">x</a>
+                                        <a class="button">c</a>
+                                        <a class="button">v</a>
+                                        <a class="button">b</a>
+                                        <a class="button">n</a>
+                                        <a class="button">m</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell show-for-medium medium-4 large-6">
+                                <img id="grafik" class="float-center" src="grafik/galge_0.png">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="highscore-place" style="display: none;">
+                        <table>
+                            <thead>
+                                <th>Brugernavn</th>
+                                <th>Point</th>
+                            </thead>
+                            <tbody id="highscoretabel">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="myscore-place" style="display: none;">
+                        <p id="myscore-text">Det ser ud som om du ikke har gættet nogle ord endnu?</p>
+                        <canvas id="myscore-cloud" width="500" height="500"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="reveal" id="wongame" data-reveal data-animation-in="spin-in" data-animation-out="spin-out" data-close-on-click="false" data-close-on-esc="false">
+        <h1>Awesome. Du vandt.</h1>
+        <p>Ordet var <span id="wonword">FEJL</span> og du gættede kun forkert <span id="wonmistakes">X</span> gange!</p>
+        <button id="wonbutton" class="button">Spil igen</button>
+        <img id="wonloading" src="loading.gif" width="30px" style="display: none">
+    </div>
+
+    <div class="reveal" id="lostgame" data-reveal data-animation-in="spin-in" data-animation-out="spin-out" data-close-on-click="false" data-close-on-esc="false">
+        <h1>Øv. Du tabte.</h1>
+        <p>Det korrekte ord var <span id="lostword">FEJL</span>.</p>
+        <button id="lostbutton" class="button">Spil igen</button>
+        <img id="lostloading" src="loading.gif" width="30px" style="display: none">
+    </div>
+
+    <script src="scripts/jquery.min.js"></script>
+    <script src="scripts/jquery.serializejson.min.js"></script>
+    <script src="scripts/what-input.js"></script>
+    <script src="scripts/wordcloud2.js"></script>
+    <script src="scripts/foundation.min.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+</html>

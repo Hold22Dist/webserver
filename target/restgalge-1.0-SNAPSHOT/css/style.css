@@ -1,0 +1,24 @@
+#word {
+    letter-spacing: 10px;
+    font-family: monospace;
+    text-align:center;
+    font-size: 35px;
+    margin-bottom:30px;
+}
+
+#keyboard div, #used-keyboard div {
+    margin-bottom: 1px;
+}
+
+#used-keyboard div a {
+    visibility: hidden;
+}
+
+#wonword, #wonmistakes, #lostword {
+    font-weight: bold;
+    font-family: monospace;
+    background-color: #d3d3d3;
+    border: 1px solid green;
+    border-radius: 3px;
+    padding: 3px;
+}
